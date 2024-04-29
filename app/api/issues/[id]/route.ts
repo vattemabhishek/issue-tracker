@@ -1,4 +1,4 @@
-import { issueSchema } from "@/app/createIssueSchema";
+import { issueSchema } from "@/app/validationSchema";
 import prisma from "@/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -23,7 +23,6 @@ export async function PATCH(
    where: {id:issue.id},
    data:{
     title : body.title,
-    // status : body.status,
     description : body.description
    }
   });

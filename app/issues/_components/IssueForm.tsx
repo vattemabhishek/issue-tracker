@@ -1,6 +1,6 @@
 'use client'
 import { ErrorMessage, Spinner } from '@/app/components'
-import  {issueSchema} from '@/app/createIssueSchema'
+import  {issueSchema} from '@/app/validationSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Issue } from '@prisma/client'
 import { Button, Callout, TextField } from '@radix-ui/themes'
@@ -36,10 +36,10 @@ const IssueForm = ({issue}:{issue? : Issue}) => {
     try {
       setSubmitting(true);
       if(issue)
-         await axios.patch('api/issues/'+issue.id,data);
+         await axios.patch('/api/issues/' + issue.id, data);
       else
-      await axios.post('/api/issues', data)
-      router.push('/issues')
+        await axios.post('/api/issues', data);
+      router.push('/issues');
       router.refresh();
     } catch (error) {
       setSubmitting(false)
@@ -73,7 +73,7 @@ const IssueForm = ({issue}:{issue? : Issue}) => {
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
         <Button disabled={isSubmitting}>
-          {issue ? 'Update Issue' : 'Submit new issue'} {'  '} 
+          {issue ? 'Update Issue' : 'Submit new issue'}{'  '} 
           {isSubmitting && <Spinner />}
         </Button>
       </form>
