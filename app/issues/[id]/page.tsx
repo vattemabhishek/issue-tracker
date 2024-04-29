@@ -14,6 +14,7 @@ const IssueDetailPage = async ({params} : {params: {id: string}}) => {
   if(!issue)
    notFound();
 
+    
   return (
     <div>
        <Heading as='h1'>{issue.title}</Heading>
