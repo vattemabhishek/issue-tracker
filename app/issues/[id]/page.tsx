@@ -3,7 +3,8 @@ import { Box, Flex, Grid } from '@radix-ui/themes';
 import { notFound } from 'next/navigation';
 import EditIssueButton from './EditIssueButton';
 import IssueDetails from './IssueDetails';
-import DeleteIssueButton from './edit/DeleteIssueButton';
+import DeleteIssueButton from './DeleteIssueButton';
+
 
 
 const IssueDetailPage = async ({params} : {params: {id: string}}) => {

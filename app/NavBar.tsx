@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import { IoBugOutline } from 'react-icons/io5'
-import classnames from 'classnames';
 import classNames from 'classnames';
 
 const NavBar = () => {
@@ -12,7 +11,7 @@ const NavBar = () => {
 
  const links = [
   {  label:'Dashboard', href:'/'},
-  {  label:'Issues', href:'/issues'}
+  {  label:'Issues', href:'/issues/list'}
  ]
   return (
    <nav className='flex space-x-6 border-b mb-5 px-5 h-14 items-center'>
