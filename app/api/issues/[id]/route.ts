@@ -24,7 +24,7 @@ export async function PATCH(
     const user = await prisma.user.findUnique({
       where: { id: assignedToUserId },
     })
-    console.log(user);
+
     if (!user)
       return NextResponse.json({ error: 'Invalid user.' }, { status: 400 })
   }
