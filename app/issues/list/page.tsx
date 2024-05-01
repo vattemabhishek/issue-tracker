@@ -5,6 +5,7 @@ import NextLink from 'next/link'
 import IssueActions from './IssueActions'
 import { Issue, Status } from '@prisma/client'
 import { ArrowUpIcon } from '@radix-ui/react-icons'
+import { Seaweed_Script } from 'next/font/google'
 
 interface Props {
   searchParams: { status: Status; orderBy: keyof Issue }
@@ -24,8 +25,15 @@ const IssuesPage = async ({ searchParams }: Props) => {
   const status = statuses.includes(searchParams.status)
     ? searchParams.status
     : undefined
+
+  const orderBy = columns
+    .map((columns) => columns.value)
+    .includes(searchParams.orderBy)
+    ? { [searchParams.orderBy]: 'asc' }
+    : undefined
   const issues = await prisma.issue.findMany({
     where: { status },
+    orderBy,
   })
 
   return (
